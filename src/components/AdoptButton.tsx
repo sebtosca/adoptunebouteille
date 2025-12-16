@@ -32,7 +32,7 @@ export const AdoptButton = ({ onClick, href = 'https://wa.me/15551647916' }: Ado
         className={`adopt-button ${isVisible ? 'slide-up' : ''} ${isClicked ? 'clicked' : ''}`}
         onClick={handleClick}
       >
-        Adopt Now
+        Adopter moi!
       </a>
     );
   }
@@ -42,7 +42,7 @@ export const AdoptButton = ({ onClick, href = 'https://wa.me/15551647916' }: Ado
       className={`adopt-button ${isVisible ? 'slide-up' : ''} ${isClicked ? 'clicked' : ''}`}
       onClick={handleClick}
     >
-      Adopt Now
+      Adopter moi!
     </button>
   );
 };
