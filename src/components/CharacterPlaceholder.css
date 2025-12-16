@@ -1,11 +1,6 @@
 .character-container {
   position: relative;
   margin: 2rem 0;
-  opacity: 0;
-}
-
-.character-container.scale-in {
-  animation: scaleIn 0.6s ease-out forwards;
 }
 
 .character-backdrop {

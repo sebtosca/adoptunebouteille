@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import './CharacterPlaceholder.css';
 
 // Import character image - replace this path with your actual image
@@ -12,17 +11,10 @@ interface CharacterPlaceholderProps {
 }
 
 export const CharacterPlaceholder = ({ imageSrc }: CharacterPlaceholderProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 400);
-    return () => clearTimeout(timer);
-  }, []);
-
   // If image is provided, use it instead of the CSS placeholder
   if (imageSrc) {
     return (
-      <div className={`character-container ${isVisible ? 'scale-in' : ''}`}>
+      <div className="character-container">
         <div className="character-backdrop"></div>
         <img 
           src={imageSrc} 
@@ -35,7 +27,7 @@ export const CharacterPlaceholder = ({ imageSrc }: CharacterPlaceholderProps) =>
 
   // Fallback to CSS placeholder if no image
   return (
-    <div className={`character-container ${isVisible ? 'scale-in' : ''}`}>
+    <div className="character-container">
       <div className="character-backdrop"></div>
       <div className="character-placeholder">
         <div className="character-body">

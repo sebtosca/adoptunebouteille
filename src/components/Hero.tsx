@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { CharacterPlaceholder } from './CharacterPlaceholder';
+import { ParticleReveal } from './ParticleReveal';
 import './Hero.css';
-
-// To use your character image, uncomment and update this import:
-// import cherieCharacter from '../assets/cherie-character.png';
 
 interface HeroProps {
   characterImageSrc?: string;
@@ -20,7 +18,9 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
   return (
     <section className={`hero ${isVisible ? 'slide-up' : ''}`}>
       <h1 className="hero-title">Chérie</h1>
-      <CharacterPlaceholder imageSrc={characterImageSrc} />
+      <ParticleReveal particleCount={60} duration={2000}>
+        <CharacterPlaceholder imageSrc={characterImageSrc} />
+      </ParticleReveal>
     </section>
   );
 };
