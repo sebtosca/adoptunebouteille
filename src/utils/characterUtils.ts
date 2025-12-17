@@ -51,3 +51,23 @@ export const getCharacterImage = (productId: string | null): string | undefined 
   return characterMap.get(productId) || getFallbackCharacter();
 };
 
+/**
+ * Gets the character name for a specific product ID.
+ * 
+ * @param productId - The product ID (e.g., "00001", "00002")
+ * @returns The character name, or "Chérie" as default
+ */
+export const getCharacterName = (productId: string | null): string => {
+  if (!productId) {
+    return 'Chérie';
+  }
+  
+  // Map product IDs to character names
+  const nameMap: Record<string, string> = {
+    '00001': 'Chérie',
+    '00002': 'Piqué',
+  };
+  
+  return nameMap[productId] || 'Chérie';
+};
+

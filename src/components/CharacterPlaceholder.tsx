@@ -8,9 +8,10 @@ import './CharacterPlaceholder.css';
 
 interface CharacterPlaceholderProps {
   imageSrc?: string;
+  characterName?: string;
 }
 
-export const CharacterPlaceholder = ({ imageSrc }: CharacterPlaceholderProps) => {
+export const CharacterPlaceholder = ({ imageSrc, characterName = 'Chérie' }: CharacterPlaceholderProps) => {
   // If image is provided, use it instead of the CSS placeholder
   if (imageSrc) {
     return (
@@ -18,7 +19,7 @@ export const CharacterPlaceholder = ({ imageSrc }: CharacterPlaceholderProps) =>
         <div className="character-backdrop"></div>
         <img 
           src={imageSrc} 
-          alt="Chérie character" 
+          alt={`${characterName} character`}
           className="character-image"
         />
       </div>
