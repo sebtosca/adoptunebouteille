@@ -39,11 +39,32 @@ jobs:
           echo "Build output contents:"
           ls -la dist/
           echo ""
-          echo "Checking index.html:"
-          cat dist/index.html | grep -E "(main\.tsx|index-.*\.js)" || echo "✓ No main.tsx references found (correct)"
+          echo "Verifying index.html..."
+          if grep -q "main.tsx" dist/index.html; then
+            echo "✗ ERROR: index.html contains main.tsx reference!"
+            echo "This should not happen in production build."
+            cat dist/index.html
+            exit 1
+          fi
+          if grep -q "index-.*\.js" dist/index.html; then
+            echo "✓ index.html correctly references built assets"
+          else
+            echo "✗ WARNING: No built asset references found in index.html"
+            exit 1
+          fi
           echo ""
-          echo "Checking 404.html:"
-          test -f dist/404.html && echo "✓ 404.html exists" || echo "✗ 404.html missing"
+          echo "Verifying 404.html..."
+          if [ ! -f dist/404.html ]; then
+            echo "✗ ERROR: 404.html is missing!"
+            exit 1
+          fi
+          if grep -q "main.tsx" dist/404.html; then
+            echo "✗ ERROR: 404.html contains main.tsx reference!"
+            exit 1
+          fi
+          echo "✓ 404.html exists and is correct"
+          echo ""
+          echo "✓ Build verification passed!"
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
