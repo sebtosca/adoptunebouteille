@@ -19,7 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
       
       - name: Setup Node.js
@@ -31,8 +31,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
-      - name: Build
+      - name: Build project
         run: npm run build
+      
+      - name: Verify build output
+        run: |
+          echo "Build output contents:"
+          ls -la dist/
+          echo ""
+          echo "Checking index.html:"
+          cat dist/index.html | grep -E "(main\.tsx|index-.*\.js)" || echo "✓ No main.tsx references found (correct)"
+          echo ""
+          echo "Checking 404.html:"
+          test -f dist/404.html && echo "✓ 404.html exists" || echo "✗ 404.html missing"
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
