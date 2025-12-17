@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { CharacterPlaceholder } from './CharacterPlaceholder';
 import { ParticleReveal } from './ParticleReveal';
 import { AdoptButton } from './AdoptButton';
+import { useProductId } from '../hooks/useProductId';
 import './Hero.css';
 
 interface HeroProps {
@@ -10,6 +11,7 @@ interface HeroProps {
 
 export const Hero = ({ characterImageSrc }: HeroProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const productId = useProductId();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 200);
@@ -22,7 +24,7 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
       <ParticleReveal particleCount={60} duration={2000}>
         <CharacterPlaceholder imageSrc={characterImageSrc} />
       </ParticleReveal>
-      <AdoptButton />
+      <AdoptButton productId={productId} />
     </section>
   );
 };
