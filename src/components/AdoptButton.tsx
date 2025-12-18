@@ -17,11 +17,19 @@ export const AdoptButton = ({ onClick, href = 'https://wa.me/15551647916', produ
   }, []);
 
   const whatsappUrl = useMemo(() => {
-    if (!productId) {
-      return href;
-    }
     const url = new URL(href);
-    url.searchParams.set('product', productId);
+    
+    // Add product ID as query parameter for tracking
+    if (productId) {
+      url.searchParams.set('product', productId);
+    }
+    
+    // Include product ID in the pre-filled message text so the bot can read it
+    // The bot will receive this in the first message and can parse the product ID
+    if (productId) {
+      url.searchParams.set('text', `Bonjour, je souhaite adopter le produit ${productId}`);
+    }
+    
     return url.toString();
   }, [href, productId]);
 

@@ -71,3 +71,20 @@ export const getCharacterName = (productId: string | null): string => {
   return nameMap[productId] || 'Chérie';
 };
 
+/**
+ * Gets whether a character has a story video.
+ * 
+ * @param productId - The product ID (e.g., "00001", "00002")
+ * @returns true if the character has a video, false otherwise
+ */
+export const hasCharacterVideo = (productId: string | null): boolean => {
+  if (!productId) {
+    return false;
+  }
+  
+  // Map product IDs that have videos
+  const videosWithProductIds: string[] = ['00002'];
+  
+  return videosWithProductIds.includes(productId);
+};
+
