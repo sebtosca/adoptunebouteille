@@ -83,7 +83,7 @@ export const hasCharacterVideo = (productId: string | null): boolean => {
   }
   
   // Map product IDs that have videos
-  const videosWithProductIds: string[] = ['00002'];
+  const videosWithProductIds: string[] = ['00001', '00002'];
   
   return videosWithProductIds.includes(productId);
 };

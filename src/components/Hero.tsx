@@ -6,6 +6,7 @@ import { useProductId } from '../hooks/useProductId';
 import { getCharacterName, hasCharacterVideo } from '../utils/characterUtils';
 import rulesImage from '../assets/rules_of_the_game.png';
 import pomponVideo from '../assets/Pompon story.mov';
+import cherryVideo from '../assets/cherry_story.mov';
 import './Hero.css';
 
 interface HeroProps {
@@ -17,6 +18,9 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
   const productId = useProductId();
   const characterName = getCharacterName(productId);
   const showVideo = hasCharacterVideo(productId);
+  
+  // Get the appropriate video based on product ID
+  const characterVideo = productId === '00001' ? cherryVideo : productId === '00002' ? pomponVideo : undefined;
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 200);
@@ -27,7 +31,7 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
     <section className={`hero ${isVisible ? 'slide-up' : ''}`} aria-label={`${characterName} adoption page`}>
       <h1 className="hero-title" style={{ animationDelay: '0.1s' }}>{characterName}</h1>
       <div className="character-container-wrapper" style={{ animationDelay: '0.3s' }}>
-        {showVideo && (
+        {showVideo && characterVideo && (
           <video 
             className="character-video-background"
             autoPlay
@@ -36,8 +40,8 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
             playsInline
             aria-hidden="true"
           >
-            <source src={pomponVideo} type="video/quicktime" />
-            <source src={pomponVideo} type="video/mp4" />
+            <source src={characterVideo} type="video/quicktime" />
+            <source src={characterVideo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         )}
@@ -46,7 +50,7 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
         </ParticleReveal>
       </div>
       <div 
-        className={`adopt-button-wrapper ${productId === '00002' ? 'pompon-spacing' : ''}`}
+        className={`adopt-button-wrapper ${productId === '00001' || productId === '00002' ? 'video-spacing' : ''}`}
         style={{ animationDelay: '0.5s' }}
       >
         <AdoptButton productId={productId} />
