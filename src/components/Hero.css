@@ -31,10 +31,40 @@
   color: #FF1493;
 }
 
+.rules-image {
+  max-width: 100%;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-top: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 1s forwards;
+  mix-blend-mode: multiply;
+  background: transparent;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
+  }
+  
+  .rules-image {
+    max-width: 90%;
+    margin-top: 1.5rem;
   }
 }
 

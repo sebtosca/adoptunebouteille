@@ -4,6 +4,7 @@ import { ParticleReveal } from './ParticleReveal';
 import { AdoptButton } from './AdoptButton';
 import { useProductId } from '../hooks/useProductId';
 import { getCharacterName } from '../utils/characterUtils';
+import rulesImage from '../assets/rules_of_the_game.png';
 import './Hero.css';
 
 interface HeroProps {
@@ -27,6 +28,11 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
         <CharacterPlaceholder imageSrc={characterImageSrc} characterName={characterName} />
       </ParticleReveal>
       <AdoptButton productId={productId} />
+      <img 
+        src={rulesImage} 
+        alt="Rules of the game" 
+        className="rules-image"
+      />
     </section>
   );
 };
