@@ -65,7 +65,7 @@ export const getCharacterName = (productId: string | null): string => {
   // Map product IDs to character names
   const nameMap: Record<string, string> = {
     '00001': 'Chérie',
-    '00002': 'Piqué',
+    '00002': 'Pompon',
   };
   
   return nameMap[productId] || 'Chérie';
