@@ -45,7 +45,10 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
           <CharacterPlaceholder imageSrc={characterImageSrc} characterName={characterName} />
         </ParticleReveal>
       </div>
-      <div style={{ animationDelay: '0.5s' }}>
+      <div 
+        className={`adopt-button-wrapper ${productId === '00002' ? 'pompon-spacing' : ''}`}
+        style={{ animationDelay: '0.5s' }}
+      >
         <AdoptButton productId={productId} />
       </div>
       <img 

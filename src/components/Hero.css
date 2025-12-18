@@ -118,6 +118,14 @@
   z-index: 1;
 }
 
+.adopt-button-wrapper {
+  margin: 0;
+}
+
+.adopt-button-wrapper.pompon-spacing {
+  margin-top: -0.5rem;
+}
+
 .rules-image {
   max-width: 100%;
   width: 100%;

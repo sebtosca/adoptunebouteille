@@ -6,7 +6,7 @@
   padding: 1.25rem 4rem;
   font-size: 1.5rem;
   font-weight: bold;
-  background: linear-gradient(135deg, var(--citeo-black) 0%, #1a1a1a 100%);
+  background: linear-gradient(135deg, var(--citeo-green) 0%, #45a049 100%);
   color: var(--citeo-white);
   border: none;
   border-radius: 12px;
@@ -18,7 +18,7 @@
   overflow: hidden;
   opacity: 0;
   margin: 1rem 0 2rem 0;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .adopt-button.slide-up {
@@ -43,13 +43,13 @@
 
 .adopt-button:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(37, 211, 102, 0.5),
+  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.5),
+    0 0 40px rgba(76, 175, 80, 0.6),
     0 0 0 1px rgba(255, 255, 255, 0.2);
   background: linear-gradient(
     135deg,
-    #1a1a1a 0%,
-    var(--citeo-black) 100%
+    #45a049 0%,
+    var(--citeo-green) 100%
   );
 }
 
@@ -64,7 +64,7 @@
 }
 
 .adopt-button:focus-visible {
-  outline: 3px solid rgba(37, 211, 102, 0.5);
+  outline: 3px solid var(--citeo-green);
   outline-offset: 2px;
 }
 
