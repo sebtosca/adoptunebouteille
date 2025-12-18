@@ -1,10 +1,5 @@
+import { useState, useEffect } from 'react';
 import './CharacterPlaceholder.css';
-
-// Import character image - replace this path with your actual image
-// Place your character image in src/assets/ and update the import path
-// Example: import characterImage from '../assets/cherie-character.png';
-// If you don't have an image yet, leave this commented out
-// import characterImage from '../assets/cherie-character.png';
 
 interface CharacterPlaceholderProps {
   imageSrc?: string;
@@ -12,15 +7,33 @@ interface CharacterPlaceholderProps {
 }
 
 export const CharacterPlaceholder = ({ imageSrc, characterName = 'Chérie' }: CharacterPlaceholderProps) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  useEffect(() => {
+    if (imageSrc) {
+      setImageLoaded(false);
+      setImageError(false);
+    }
+  }, [imageSrc]);
+
   // If image is provided, use it instead of the CSS placeholder
   if (imageSrc) {
     return (
       <div className="character-container">
         <div className="character-backdrop"></div>
+        {!imageLoaded && !imageError && (
+          <div className="character-image-skeleton" aria-hidden="true">
+            <div className="skeleton-shimmer"></div>
+          </div>
+        )}
         <img 
           src={imageSrc} 
           alt={`${characterName} character`}
-          className="character-image"
+          className={`character-image ${imageLoaded ? 'loaded' : ''}`}
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageError(true)}
+          loading="lazy"
         />
       </div>
     );

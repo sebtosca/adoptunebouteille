@@ -24,9 +24,9 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
   }, []);
 
   return (
-    <section className={`hero ${isVisible ? 'slide-up' : ''}`}>
-      <h1 className="hero-title">{characterName}</h1>
-      <div className="character-container-wrapper">
+    <section className={`hero ${isVisible ? 'slide-up' : ''}`} aria-label={`${characterName} adoption page`}>
+      <h1 className="hero-title" style={{ animationDelay: '0.1s' }}>{characterName}</h1>
+      <div className="character-container-wrapper" style={{ animationDelay: '0.3s' }}>
         {showVideo && (
           <video 
             className="character-video-background"
@@ -34,6 +34,7 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
             loop
             muted
             playsInline
+            aria-hidden="true"
           >
             <source src={pomponVideo} type="video/quicktime" />
             <source src={pomponVideo} type="video/mp4" />
@@ -44,11 +45,15 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
           <CharacterPlaceholder imageSrc={characterImageSrc} characterName={characterName} />
         </ParticleReveal>
       </div>
-      <AdoptButton productId={productId} />
+      <div style={{ animationDelay: '0.5s' }}>
+        <AdoptButton productId={productId} />
+      </div>
       <img 
         src={rulesImage} 
-        alt="Rules of the game" 
+        alt="Règles du jeu - Certificat d'adoption avec instructions pour nourrir la bouteille" 
         className="rules-image"
+        style={{ animationDelay: '0.7s' }}
+        loading="lazy"
       />
     </section>
   );

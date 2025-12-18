@@ -1,12 +1,15 @@
 .adopt-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
   padding: 1.25rem 4rem;
   font-size: 1.5rem;
   font-weight: bold;
-  background-color: var(--citeo-black);
+  background: linear-gradient(135deg, var(--citeo-black) 0%, #1a1a1a 100%);
   color: var(--citeo-white);
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
@@ -15,7 +18,7 @@
   overflow: hidden;
   opacity: 0;
   margin: 1rem 0 2rem 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .adopt-button.slide-up {
@@ -39,13 +42,14 @@
 }
 
 .adopt-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(33, 150, 243, 0.4);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(37, 211, 102, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
   background: linear-gradient(
     135deg,
-    var(--citeo-black) 0%,
-    #333 100%
+    #1a1a1a 0%,
+    var(--citeo-black) 100%
   );
 }
 
@@ -55,8 +59,24 @@
 
 .adopt-button:active,
 .adopt-button.clicked {
-  transform: translateY(0) scale(0.98);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.adopt-button:focus-visible {
+  outline: 3px solid rgba(37, 211, 102, 0.5);
+  outline-offset: 2px;
+}
+
+.whatsapp-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.adopt-button:hover .whatsapp-icon {
+  transform: scale(1.1) rotate(5deg);
 }
 
 .adopt-button::after {
@@ -80,9 +100,16 @@
 
 @media (max-width: 768px) {
   .adopt-button {
-    padding: 1rem 3rem;
+    padding: 1.25rem 3.5rem;
     font-size: 1.25rem;
-    margin: 0.75rem 0 1.5rem 0;
+    margin: 1rem 0;
+    min-height: 56px; /* Minimum touch target size */
+    gap: 0.5rem;
+  }
+  
+  .whatsapp-icon {
+    width: 20px;
+    height: 20px;
   }
 }
 

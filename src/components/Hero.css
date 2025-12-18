@@ -4,10 +4,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 3rem;
   opacity: 0;
   width: 100%;
   max-width: 100%;
+  gap: 2rem;
 }
 
 .hero.slide-up {
@@ -17,18 +18,37 @@
 .hero-title {
   font-size: 3.5rem;
   color: var(--citeo-pink);
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   font-weight: bold;
   text-align: center;
   letter-spacing: 0.05em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 105, 180, 0.3);
   transition: transform 0.3s ease, color 0.3s ease;
   cursor: default;
+  opacity: 0;
+  animation: fadeInDown 0.8s ease-out forwards;
 }
 
 .hero-title:hover {
   transform: scale(1.05);
   color: #FF1493;
+}
+
+.hero-title:focus-visible {
+  outline: 3px solid var(--citeo-pink);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .character-container-wrapper {
@@ -38,7 +58,37 @@
   justify-content: center;
   width: 100%;
   max-width: 600px;
-  margin: 1rem 0;
+  margin: 1rem 0 2rem;
+  opacity: 0;
+  animation: fadeInScale 1s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title {
+    animation: none;
+    opacity: 1;
+  }
+  
+  .character-container-wrapper {
+    animation: none;
+    opacity: 1;
+  }
+  
+  .rules-image {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .character-video-background {
@@ -46,15 +96,21 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 500px;
+  width: 120%;
+  max-width: 700px;
   height: auto;
-  opacity: 0.3;
+  opacity: 0.5;
   z-index: 0;
-  border-radius: 20px;
+  border-radius: 24px;
   object-fit: cover;
-  filter: blur(2px);
+  filter: blur(2px) brightness(1.05);
   pointer-events: none;
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+.character-container-wrapper:hover .character-video-background {
+  opacity: 0.65;
+  filter: blur(1px) brightness(1.1);
 }
 
 .character-container-wrapper .character-container {
@@ -65,15 +121,32 @@
 .rules-image {
   max-width: 100%;
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   height: auto;
-  margin-top: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
   opacity: 0;
-  animation: fadeIn 0.8s ease-out 1s forwards;
+  animation: fadeInUp 0.8s ease-out forwards;
   mix-blend-mode: multiply;
   background: transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rules-image:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
@@ -88,24 +161,38 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 1.5rem 1rem 2rem;
+    gap: 1.5rem;
+    min-height: calc(100vh - 100px);
+  }
+  
   .hero-title {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
   }
   
   .character-container-wrapper {
     max-width: 90%;
+    margin: 0.5rem 0 1.5rem;
   }
   
   .character-video-background {
-    max-width: 100%;
-    opacity: 0.25;
-    filter: blur(3px);
+    max-width: 110%;
+    opacity: 0.4;
+    filter: blur(2px) brightness(1.05);
+  }
+  
+  .character-container-wrapper:hover .character-video-background {
+    opacity: 0.55;
+    filter: blur(1px) brightness(1.1);
   }
   
   .rules-image {
-    max-width: 90%;
-    margin-top: 1.5rem;
+    max-width: 95%;
+    margin-top: 0.5rem;
+    border-radius: 10px;
   }
 }
 

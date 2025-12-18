@@ -19,7 +19,7 @@ export const Header = ({ logoSrc }: HeaderProps) => {
   }, []);
 
   return (
-    <header className={`header ${isVisible ? 'fade-in' : ''}`}>
+    <header className={`header ${isVisible ? 'fade-in' : ''}`} role="banner">
       {logoSrc ? (
         <img 
           src={logoSrc} 
