@@ -29,7 +29,7 @@ export const Hero = ({ characterImageSrc }: HeroProps) => {
 
   return (
     <section className={`hero ${isVisible ? 'slide-up' : ''}`} aria-label={`${characterName} adoption page`}>
-      <h1 className="hero-title" style={{ animationDelay: '0.1s' }}>{characterName}</h1>
+      <h1 className={`hero-title ${productId === '00002' ? 'pompon-name' : ''}`} style={{ animationDelay: '0.1s' }}>{characterName}</h1>
       <div className="character-container-wrapper" style={{ animationDelay: '0.3s' }}>
         {showVideo && characterVideo && (
           <video 

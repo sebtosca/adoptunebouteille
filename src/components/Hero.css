@@ -34,6 +34,15 @@
   color: #FF1493;
 }
 
+.hero-title.pompon-name {
+  color: var(--citeo-green);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15), 0 0 20px rgba(76, 175, 80, 0.3);
+}
+
+.hero-title.pompon-name:hover {
+  color: #45a049;
+}
+
 .hero-title:focus-visible {
   outline: 3px solid var(--citeo-pink);
   outline-offset: 4px;
